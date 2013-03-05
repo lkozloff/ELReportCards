@@ -1,0 +1,329 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>AHIS Report Test</title>
+<link rel = "stylesheet" type="text/css" href="styles_test.css"/>
+<script src="js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery.jeditable.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery.jeditable.time.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery.jeditable.ajaxupload.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery.jeditable.checkbox.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+ $(document).ready(function() {
+	 $('.editGrade').editable('save.php', { 
+	     data   : " {'4':'4','3':'3','2':'2','1':'1','NA':'NA','UG':'UG', 'selected':'4'}",
+	     type   : 'select',
+	     submit : 'OK'
+	 });
+	 $('.editEffort').editable('save.php', { 
+	     data   : " {'E':'E','G':'G','S':'S','N':'N','U':'U','NA':'NA','UG':'UG', 'selected':'E'}",
+	     type   : 'select',
+	     submit : 'OK'
+	 });
+     $('.edit_area').editable('save.php', { 
+         type      : 'textarea',
+         cancel    : 'Cancel',
+         submit    : 'OK',
+         indicator : '<img src="img/indicator.gif">',
+         tooltip   : 'Click to edit...'
+     });
+     $(".timepicker").editable("save.php", { 
+        indicator : "<img src='img/indicator.gif'>",
+        type      : 'time',
+        submit    : 'OK',
+        tooltip   : "Click to edit..."
+    });
+    //not yet implemented
+    /*$(".ajaxupload").editable("upload.php", { 
+        indicator : "<img src='img/indicator.gif'>",
+        type      : 'ajaxupload',
+        submit    : 'Upload',
+        cancel    : 'Cancel',
+        tooltip   : "Click to upload..."
+    });*/
+    $(".cbox").editable("save.php", { 
+        type      : 'checkbox',
+        submit    : 'OK',
+        cancel    : 'Cancel',
+	checkbox: { trueValue: 'true', falseValue: 'false'}
+    });
+
+ });
+</script>
+</head>
+<body>
+<div class = "left">
+		<table border="1" style ="width: 90%; text-align: center; margin-left: .5cm;">
+				<tr><td><b>GENERAL COMMENTS</b></td></tr>
+				<tr><td>S1 - English		</td></tr>
+				<tr><td class="commentblock">&nbsp;&nbsp;&nbsp;$comment1</td></tr>
+				<tr><td>S1 - Khmer			</td></tr>
+				<tr><td class="commentblock">&nbsp;&nbsp;&nbsp;$comment2</td></tr>
+				<tr><td>S2 - English		</td></tr>
+				<tr><td class="commentblock">&nbsp;&nbsp;&nbsp;$comment3</td></tr>
+				<tr><td>S2 - Khmer			</td></tr>
+				<tr><td class="commentblock">&nbsp;&nbsp;&nbsp;$comment4</td></tr>	
+		</table>
+
+
+</div>	
+<div class = "right">
+		<table style = "width: 50%">
+			<tr><td style = "height: 3cm;"></td></tr>
+			<tr><td align ="center"><b style = "font-size: .60cm;">ASIAN HOPE INTERNATIONAL SCHOOL</b></td></tr>
+			<tr><td align ="center"><b style = "font-size: .40cm;">a ministry of Asian Hope Cambodia</b></td></tr>
+			<tr><td align ="center"><b style = "font-size: .40cm;">PHNOM PENH, KINGDOM OF CAMBODIA</b></td></tr>
+			<tr><td align ="center"><b style = "font-size: .60cm;">2012-2013 REPORT CARD</b></td></tr>
+			<tr><td align ="center"><b style = "font-size: .40cm;">PH: 023.885.170</b></td></tr>
+			<tr><td align ="center"><b style = "font-size: .40cm;">ASIANHOPESCHOOL.ORG</b></td></tr>
+			<tr><td style = "height: 1cm;"></td></tr>
+			<tr><td align = "center">
+					<table style = "width: 8cm; border: none;">		
+					<tr><td><b>Student</b></td><td align = "right">$sname</td></tr>
+					<tr><td><b>Grade</b></td><td align = "right">$grade</td></tr>
+					<tr><td><b>Classroom Teacher</b></td><td align = "right">$teacher</td></tr>
+					<tr><td><b>Khmer Teacher</b></td><td align = "right">$teacher_kh</td></tr>
+					<tr><td><b>Date</b></td><td align = "right">$date</td></tr>
+					</table>
+			</td></tr>
+			<tr><td align = "center">
+				<table style = "width: 8cm;" border = "1" align = "center">		
+					<tr><td align = "right" style = "width: 4cm"><b>Semester&nbsp;&nbsp;&nbsp;</b></td><td align = "center" style = "width:2cm">1</td><td align = "center"  style = "width:2cm">2</td></tr>
+					<tr><td align = "center" colspan="3" style ="font-size:small;"><b>Attendance</b></td></tr>
+					<tr><td align = "right"><b>Number of School Days&nbsp;&nbsp;&nbsp;</b></td><td align = "center">$sdays1</td><td align = "center">$sdays2</td></tr>
+					<tr><td align = "right"><b>Days Absent&nbsp;&nbsp;&nbsp;</b></td><td align = "center">$da1</td><td align = "center">$da2</td></tr>
+					<tr><td align = "right"><b>Days Tardy&nbsp;&nbsp;&nbsp;</b></td><td align = "center">$dt1</td><td align = "center">$dt2</td></tr>
+				</table>
+			</td></tr>
+			<tr><td align = "center">
+				<table style = "width: 10cm;" border = "0">		
+					<tr><td style = "height: .75cm;" align = "left"><b>Classroom Teacher's Signature&nbsp;&nbsp;&nbsp;</b></td><td align = "center">_____________________</td></tr>
+					<tr><td style = "height: .75cm;" align = "left"><b>Khmer Teacher's Signature&nbsp;&nbsp;&nbsp;</b></td><td align = "center">_____________________</td></tr>
+					<tr><td style = "height: .75cm;" align = "left"><b>Principal's Signature&nbsp;&nbsp;&nbsp;</b></td><td align = "center">_____________________</td></tr>
+				</table>
+			</td></tr>
+		
+		</table>
+</div>
+		
+
+<!-- --------------------------------------------Break Here-------------------------------------------------------------------------------------- -->	
+<div style ="page-break-before: always;"></div>	
+<!-- --------------------------------------------Break Here-------------------------------------------------------------------------------------- -->
+
+		<div class = "left">
+		<table border="1">
+				<tr><td align ="right" style = "font-size:small" rowspan="2"><b>Grading Period</b>   </td><td  align = "center" colspan="2">Semester 1</td><td  align = "center" colspan="2">Semester 2</td></tr>
+				<tr><td align = "center">Grade</td><td align = "center">Effort</td><td align = "center">Grade</td><td align = "center">Effort</td></tr>
+				<tr><td align="right" colspan = "5" style = "font-size:small">English Language Arts   <br>ទំនាក់ទំនងលេខ   </td></tr>
+				
+				<tr><td align="right" style = "font-size:small;">Speaking and Listening   <br>ទំនាក់ទំនងលេខ   </td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">4</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">E</td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">3</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">U</td>
+				</tr>
+				
+				<tr><td align="right" style = "font-size:small;">Reading   <br>ទំនាក់ទំនងលេខ   </td>
+				<td align = "center" style = "font-size:small;" class = "editGrade">4</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">E</td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">3</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">U</td>
+				</tr>
+				
+				<tr><td align="right" style = "font-size:small;">Writing (including spelling)   <br>ទំនាក់ទំនងលេខ   </td>
+				<td align = "center" style = "font-size:small;" class = "editGrade">4</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">E</td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">3</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">U</td>
+				</tr>
+								
+				<tr><td align="right" colspan = "5" style = "font-size:normal"> Language Arts   <br>ទំនាក់ទំនងលេខ   </td></tr>
+				
+				<tr><td align="right" style = "font-size:small;">Speaking and Listening   <br>ទំនាក់ទំនងលេខ   </td>
+				<td align = "center" style = "font-size:small;" class = "editGrade">4</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">E</td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">3</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">U</td>
+				</tr>
+				
+				<tr><td align="right" style = "font-size:small;">Reading   <br>ទំនាក់ទំនងលេខ   </td>
+				<td align = "center" style = "font-size:small;" class = "editGrade">4</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">E</td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">3</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">U</td>
+				</tr>
+				
+				<tr><td align="right" style = "font-size:small;">Writing (including spelling)   <br>ទំនាក់ទំនងលេខ   </td>
+				<td align = "center" style = "font-size:small;" class = "editGrade">4</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">E</td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">3</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">U</td>
+				</tr>
+				
+				<tr><td align="right" colspan = "5" style = "font-size:normal">Mathematics   <br>ទំនាក់ទំនងលេខ   </td></tr>
+				
+				<tr><td align="right" style = "font-size:small;">Numbers   <br>ទំនាក់ទំនងលេខ   </td>
+				<td align = "center" style = "font-size:small;" class = "editGrade">4</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">E</td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">3</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">U</td>
+				</tr>
+				
+				<tr><td align="right" style = "font-size:small;">Shape, Space and Measure   <br>ទំនាក់ទំនងលេខ   </td>
+				<td align = "center" style = "font-size:small;" class = "editGrade">4</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">E</td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">3</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">U</td>
+				</tr>
+				
+				<tr><td align="right" style = "font-size:small;">Data Handling   <br>ទំនាក់ទំនងលេខ   </td>
+				<td align = "center" style = "font-size:small;" class = "editGrade">4</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">E</td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">3</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">U</td>
+				</tr>
+				
+				<tr><td align="right" style = "font-size:small;">Problem Solving   <br>ទំនាក់ទំនងលេខ   </td>
+				<td align = "center" style = "font-size:small;" class = "editGrade">4</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">E</td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">3</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">U</td>
+				</tr>
+				
+				<tr><td align="right" colspan = "5"></td></tr>
+				
+				<tr><td align="right" style = "font-size:small;">Topic (Science, Social Studies, Humanities, Art)<br>ទំនាក់ទំនងលេខ   </td>
+				<td align = "center" style = "font-size:small;" class = "editGrade">4</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">E</td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">3</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">U</td>
+				</tr>
+				
+				<tr><td align="right" style = "font-size:small;">Performing Arts   <br>ទំនាក់ទំនងលេខ   </td>
+				<td align = "center" style = "font-size:small;" class = "editGrade">4</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">E</td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">3</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">U</td>
+				</tr>
+				<tr><td align="right" style = "font-size:small;">Physical Education   <br>ទំនាក់ទំនងលេខ   </td>
+				<td align = "center" style = "font-size:small;" class = "editGrade">4</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">E</td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">3</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">U</td>
+				</tr>
+				
+				</table>
+		</div>
+		<div class = "right">
+		<table border="1">
+			<tr><td align ="right" style = "font-size:small" rowspan="2"><b>Grading Period</b>   </td><td  align = "center" colspan="2">Semester 1</td><td  align = "center" colspan="2">Semester 2</td></tr>
+				<tr><td align = "center">Grade</td><td align = "center">Effort</td><td align = "center">Grade</td><td align = "center">Effort</td></tr>
+	
+				<tr><td align="right" colspan = "5" style = "font-size:normal">Study and Learning Skills   <br>ទំនាក់ទំនងលេខ   </td></tr>
+	
+				<tr><td align="right" style = "font-size:small;">Works independently   <br>ទំនាក់ទំនងលេខ   </td>
+				<td align = "center" style = "font-size:small;" class = "editGrade">4</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">E</td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">3</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">U</td>
+			</tr>
+
+				<tr><td align="right" style = "font-size:small;">Plays well in groups   <br>ទំនាក់ទំនងលេខ   </td>
+				<td align = "center" style = "font-size:small;" class = "editGrade">4</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">E</td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">3</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">U</td>
+				</tr>
+			
+				<tr><td align="right" style = "font-size:small;">Plays cooperatively with others   <br>ទំនាក់ទំនងលេខ   </td>
+				<td align = "center" style = "font-size:small;" class = "editGrade">4</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">E</td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">3</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">U</td>
+				</tr>
+				
+				<tr><td align="right" style = "font-size:small;">Follows directions   <br>ទំនាក់ទំនងលេខ   </td>
+				<td align = "center" style = "font-size:small;" class = "editGrade">4</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">E</td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">3</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">U</td>
+				</tr>
+			
+				<tr><td align="right" style = "font-size:small;">Organizes and looks after belongings   <br>ទំនាក់ទំនងលេខ   </td>
+				<td align = "center" style = "font-size:small;" class = "editGrade">4</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">E</td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">3</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">U</td>
+				</tr>
+				
+				<tr><td align="right" style = "font-size:small;">Perseveres in problem solving   <br>ទំនាក់ទំនងលេខ   </td>
+				<td align = "center" style = "font-size:small;" class = "editGrade">4</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">E</td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">3</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">U</td>
+				</tr>
+			
+				<tr><td align="right" style = "font-size:small;">Makes good use of time   <br>ទំនាក់ទំនងលេខ   </td>
+				<td align = "center" style = "font-size:small;" class = "editGrade">4</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">E</td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">3</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">U</td>
+				</tr>
+			
+				<tr><td align="right" style = "font-size:small;">Seeks help when needed   <br>ទំនាក់ទំនងលេខ   </td>
+				<td align = "center" style = "font-size:small;" class = "editGrade">4</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">E</td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">3</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">U</td>
+				</tr>
+			
+				<tr><td align="right" style = "font-size:small;">Completes classwork   <br>ទំនាក់ទំនងលេខ   </td>
+				<td align = "center" style = "font-size:small;" class = "editGrade">4</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">E</td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">3</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">U</td>
+				</tr>
+			
+				<tr><td align="right" style = "font-size:small;">Works neatly and carefully   <br>ទំនាក់ទំនងលេខ   </td>
+				<td align = "center" style = "font-size:small;" class = "editGrade">4</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">E</td>
+					<td align = "center" style = "font-size:small;" class = "editGrade">3</td>
+					<td align = "center" style = "font-size:small;" class = "editEffort">U</td>
+				</tr>
+				</table>
+				<br><br>
+					<table class = "font-size:x-small">
+				<tr>
+					<td>
+						<table border="1">
+						<tr><td colspan="2" align="center" style = "width:5.5cm">Achievement</td></tr>
+						<tr><td style="width:.5cm" align="center">4</td><td style = "width:5cm; font-size: x-small;">&nbsp;&nbsp;&nbsp;Consistently Above Standard<br>&nbsp;&nbsp;&nbsp;ទំនាក់ទំនងលេខ&nbsp;&nbsp;&nbsp;</td></tr>
+						<tr><td style="width:.5cm" align="center">3</td><td style = "width:5cm; font-size: x-small;">&nbsp;&nbsp;&nbsp;Meeting Standards&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;ទំនាក់ទំនងលេខ&nbsp;&nbsp;&nbsp;</td></tr>
+						<tr><td style="width:.5cm" align="center">2</td><td style = "width:5cm; font-size: x-small;">&nbsp;&nbsp;&nbsp;Making Progress&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;ទំនាក់ទំនងលេខ&nbsp;&nbsp;&nbsp;</td></tr>
+						<tr><td style="width:.5cm" align="center">1</td><td style = "width:5cm; font-size: x-small;">&nbsp;&nbsp;&nbsp;Making Minimum Progress&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;ទំនាក់ទំនងលេខ&nbsp;&nbsp;&nbsp;</td></tr>
+						<tr><td style="width:.5cm" align="center">NA</td><td style = "width:5cm; font-size: x-small;">&nbsp;&nbsp;&nbsp;Not Applicable&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;ទំនាក់ទំនងលេខ&nbsp;&nbsp;&nbsp;</td></tr>
+						</table>
+					</td>
+					
+					<td></td>
+					
+					<td>
+						<table border="1">
+						<tr><td colspan="2" align="center" style = "width:5.5cm">Effort</td></tr>
+						<tr><td style="width:.5cm" align="center">E</td><td style = "width:5cm; font-size: x-small;">&nbsp;&nbsp;&nbsp;Excellent&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;ទំនាក់ទំនងលេខ&nbsp;&nbsp;&nbsp;</td></tr>
+						<tr><td style="width:.5cm" align="center">G</td><td style = "width:5cm; font-size: x-small;">&nbsp;&nbsp;&nbsp;Good&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;ទំនាក់ទំនងលេខ&nbsp;&nbsp;&nbsp;</td></tr>
+						<tr><td style="width:.5cm" align="center">S</td><td style = "width:5cm; font-size: x-small;">&nbsp;&nbsp;&nbsp;Satisfactory&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;ទំនាក់ទំនងលេខ&nbsp;&nbsp;&nbsp;</td></tr>
+						<tr><td style="width:.5cm" align="center">N</td><td style = "width:5cm; font-size: x-small;">&nbsp;&nbsp;&nbsp;Needs Improvement&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;ទំនាក់ទំនងលេខ&nbsp;&nbsp;&nbsp;</td></tr>
+						<tr><td style="width:.5cm" align="center">U</td><td style = "width:5cm; font-size: x-small;">&nbsp;&nbsp;&nbsp;Unsatisfactory&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;ទំនាក់ទំនងលេខ&nbsp;&nbsp;&nbsp;</td></tr>
+						<tr><td style="width:.5cm" align="center">NA</td><td style = "width:5cm; font-size: x-small;">&nbsp;&nbsp;&nbsp;Not Applicable&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;ទំនាក់ទំនងលេខ&nbsp;&nbsp;&nbsp;</td></tr>
+						</table>
+					</td>
+				</tr>
+				</table>
+			
+		</div>
+		
+	
+</body>	
+</html>

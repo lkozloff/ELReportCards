@@ -1,0 +1,69 @@
+body{
+
+}
+table{
+	background-color: white;
+	border-collapse: collapse;
+	margin: .5cm;
+	border: none;
+	padding:.1cm;
+	width: 130mm;
+}
+table.outline{
+	border: solid black 1px;
+	margin:0 0 15 0px;
+}
+table.nooutline{
+	border: none;
+	margin:0 0 15 0px;
+}
+td{
+	border: solid black 1px;
+	padding: .05cm;
+	font-size: normal;
+}
+.sectiontitle{
+	font-weight: bold;
+	background-color: rgb(240,240,240);
+	font-size: normal;
+	text-align: right;
+}
+.sectiontitlecenter{
+	font-weight: bold;
+	background-color: rgb(240,240,240);
+	font-size: normal;
+	text-align: center;
+}
+
+.false{
+	color: rgb(220,220,220);
+}
+.true{
+	color: green;
+}
+.editGrade{
+	font-weight: bold;
+}
+.editEffort{
+	font-weight: bold;	
+}
+
+.right{
+	width: 297mm;
+}
+.left{
+	float:left;
+	width: 148.5mm;
+	margin-right: 1cm;
+}
+
+.commentblock{
+	text-align: left;
+	height: 3.5cm;
+}
+.noborder{
+	border: none;
+}
+.student{
+	border: none;
+}

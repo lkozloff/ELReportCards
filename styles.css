@@ -1,0 +1,31 @@
+body{
+	background-color: rgb(240,240,240);
+}
+table{
+	background-color: white;
+	border-collapse: collapse;
+	margin:0 0 15 0px;
+	border: solid black 1px;
+	padding:15px;
+}
+.false{
+	color: rgb(220,220,220);
+}
+.true{
+	color: green;
+}
+.editGrade{
+	font-weight: bold;
+}
+.editEffort{
+	font-weight: bold;	
+}
+
+.right{
+
+
+}
+.left{
+	float:left;
+	width:50%;
+}
