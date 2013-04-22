@@ -42,9 +42,9 @@ class ReportCard{
 	
 	//grading schema - if these are updated, need to redo headers and key
 	private $schema_3 = Array(
-			'Ch'=>'Check',
-			'.'=>'UG', 
-			'selected'=>'Check'
+			'Ch'=>'✔',
+			'.'=>' ', 
+			'selected'=>'✔'
 			);
 	private $schema_4e = Array(
 			'E'=>'E','G'=>'G','S'=>'S','N'=>'N','U'=>'U','NA'=>'NA','.'=>'UG', 'selected'=>'E'
