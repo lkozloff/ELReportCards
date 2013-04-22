@@ -1,0 +1,9 @@
+ELReportCards, for lack of a better name, provides an interface for
+EL teachers to input grades.
+
+As written it requires:
+- JQuery and JEditable
+- OpenSIS (or rather, access to an OpenSIS database for pulling student names)
+
+This is definitely still in development, there's lots of mess in here.
+Beware.

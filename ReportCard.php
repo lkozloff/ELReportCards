@@ -465,7 +465,7 @@ class ReportCard{
 		return(new PDO('mysql:host=localhost;dbname=opensis_lisah', "root", "mysqldrowssaP"));
 	}
 	private function connectELDB(){
-		$dbh = new PDO('mysql:host=localhost;dbname=test', "root", "mysqldrowssaP");
+		$dbh = new PDO('mysql:host=localhost;dbname=el_reportcards', "root", "mysqldrowssaP");
 		$dbh->query('SET NAMES utf8');
 		return($dbh);
 	}		
