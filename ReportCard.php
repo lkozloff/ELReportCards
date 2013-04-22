@@ -281,11 +281,11 @@ class ReportCard{
 					<td style = "border-style:none;">
 						<table style = "width:90%;">
 							<tr class = "sectiontitlecenter"><td colspan="2"  style = "width:100%; font-size:xsmall">Achievement</td></tr>
-							<tr><td style="width:3%" align="center">4</td><td style = "width:50%; font-size: xsmall;">Consistently Above Standard<br>ទំនាក់ទំនងលេខ</td></tr>
-							<tr><td style="width:3%" align="center">3</td><td style = "width:50%; font-size: xsmall;">Meeting Standards<br>ទំនាក់ទំនងលេខ</td></tr>
-							<tr><td style="width:3%" align="center">2</td><td style = "width:50%; font-size: xsmall;">Making Progress<br>ទំនាក់ទំនងលេខ</td></tr>
-							<tr><td style="width:3%" align="center">1</td><td style = "width:50%; font-size: xsmall;">Making Minimum Progress<br>ទំនាក់ទំនងលេខ</td></tr>
-							<tr><td style="width:3%" align="center">NA</td><td style = "width:50%; font-size: xsmall;">Not Applicable<br>ទំនាក់ទំនងលេខ</td></tr>
+							<tr><td style="width:3%" align="center">4</td><td style = "width:50%; font-size: xsmall;">Consistently Above Standard<br>លើស្តង់ដា</td></tr>
+							<tr><td style="width:3%" align="center">3</td><td style = "width:50%; font-size: xsmall;">Meeting Standards<br>ស្មើរស្តងដា</td></tr>
+							<tr><td style="width:3%" align="center">2</td><td style = "width:50%; font-size: xsmall;">Making Progress<br>ដំណើរការទៅដល់ស្តង់ដា</td></tr>
+							<tr><td style="width:3%" align="center">1</td><td style = "width:50%; font-size: xsmall;">Making Minimum Progress<br>អប្បបរមាក្នុងការដល់ស្តង់ដា</td></tr>
+							<tr><td style="width:3%" align="center">NA</td><td style = "width:50%; font-size: xsmall;">Not Applicable<br>មិនមាននៅឡើយ</td></tr>
 						</table>
 					</td>
 					
@@ -294,12 +294,12 @@ class ReportCard{
 					<td style = "border-style:none">
 						<table style = "width:90%;">
 							<tr class = "sectiontitlecenter"><td colspan="2" style = "width:100%; font-size:xsmall">Effort</td></tr>
-							<tr><td style="width:3%" align="center">E</td><td style = "width:50%; font-size: xsmall;">Excellent<br>ទំនាក់ទំនងលេខ</td></tr>
-							<tr><td style="width:3%" align="center">G</td><td style = "width:50%; font-size: xsmall;">Good<br>ទំនាក់ទំនងលេខ</td></tr>
-							<tr><td style="width:3%" align="center">S</td><td style = "width:50%; font-size: xsmall;">Satisfactory<br>ទំនាក់ទំនងលេខ</td></tr>
-							<tr><td style="width:3%" align="center">N</td><td style = "width:50%; font-size: xsmall;">Needs Improvement<br>ទំនាក់ទំនងលេខ</td></tr>
-							<tr><td style="width:3%" align="center">U</td><td style = "width:50%; font-size: xsmall;">Unsatisfactory<br>ទំនាក់ទំនងលេខ</td></tr>
-							<tr><td style="width:3%" align="center">NA</td><td style = "width:50%; font-size: xsmall;">Not Applicable<br>ទំនាក់ទំនងលេខ</td></tr>
+							<tr><td style="width:3%" align="center">E</td><td style = "width:50%; font-size: xsmall;">Excellent<br>ល្អណា</td></tr>
+							<tr><td style="width:3%" align="center">G</td><td style = "width:50%; font-size: xsmall;">Good<br>ល្អ</td></tr>
+							<tr><td style="width:3%" align="center">S</td><td style = "width:50%; font-size: xsmall;">Satisfactory<br>មធ្យម</td></tr>
+							<tr><td style="width:3%" align="center">N</td><td style = "width:50%; font-size: xsmall;">Needs Improvement<br>ខ្សោយ</td></tr>
+							<tr><td style="width:3%" align="center">U</td><td style = "width:50%; font-size: xsmall;">Unsatisfactory<br>ខ្សោយណាស់</td></tr>
+							<tr><td style="width:3%" align="center">NA</td><td style = "width:50%; font-size: xsmall;">Not Applicable<br>មិនមាននៅឡើយ</td></tr>
 						</table>
 					</td>
 				</tr>
@@ -312,7 +312,7 @@ class ReportCard{
 	function printHeader(){
 		if($this->COLUMNS == 3){
 			?>
-			<tr><td class = "sectiontitlecenter"></td><td class = "sectiontitlecenterfixed">Yes</td><td class = "sectiontitlecenterfixed">Developing</td><td class = "sectiontitlecenterfixed">Not Yet</td>
+			<tr><td class = "sectiontitlecenter"></td><td class = "sectiontitlecenterfixed">Yes<br/>ធ្វើបាន</td><td class = "sectiontitlecenterfixed">Developing<br/>កំពុងធ្វើ</td><td class = "sectiontitlecenterfixed">Not Yet<br/>មិនទាន់ធ្វើបាន</td>
 			<?php 
 		}
 		else if($this->COLUMNS ==4){
