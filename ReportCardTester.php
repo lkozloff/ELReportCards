@@ -78,7 +78,7 @@
 		         //submit    : 'OK',
 		         onblur : 'submit',
 		         indicator : '<img src="img/indicator.gif">',
-		         tooltip   : 'Click to edit...'
+		         placeholder   : ''
 		     });
 		 });
 		 </script>
