@@ -1,0 +1,100 @@
+@font-face {
+  font-family: 'Andika';
+  src: local('Andika'), url('fonts/Andika-R.ttf') format('truetype');
+  }
+body{
+  font-family: 'Andika';
+}
+table{
+	background-color: white;
+	border-collapse: collapse;
+	border: none;
+	width: 130mm;
+}
+table.outline{
+	border: solid black 1px;
+	margin:0 0 0 0px;
+}
+table.nooutline{
+	border: none;
+	margin:0 0 0 0px;
+}
+#title{
+	border: none;
+	margin:0 0 0 0px;
+	height: 195mm;
+}
+#comments{
+	border: solid black 1px;
+	margin:0 0 0 0px;
+	height: 195mm;
+}
+.commentSectionTitle{
+	font-weight: bold;
+	background-color: rgb(240,240,240);
+	font-size: large;
+	text-align: center;
+	height: 7mm;
+}
+td{
+	border: solid black 1px;
+	padding: .05cm;
+	font-size: .25cm;
+}
+.left{
+	border: none;
+	padding-right: .5cm;
+}
+.right{
+	border: none;
+	padding-left: 1cm;
+}
+.sectiontitle{
+	font-weight: bold;
+	background-color: rgb(240,240,240);
+	font-size: large;
+	text-align: right;
+}
+.sectiontitlecenter{
+	font-weight: bold;
+	background-color: rgb(240,240,240);
+	font-size: large;
+	text-align: center;
+}
+.sectiontitlecenterfixed{
+	font-weight: bold;
+	background-color: rgb(240,240,240);
+	font-size: large;
+	text-align: center;
+	width: 1.5cm;
+}
+
+.false{
+	color: rgb(220,220,220);
+}
+.true{
+	color: green;
+}
+.editGrade{
+	font-weight: bold;
+	font-size: large;
+}
+.editEffort{
+	font-weight: bold;	
+	font-size: large;
+}
+
+.commentblock{
+	text-align: left;
+	height: 3.5cm;
+}
+.noborder{
+	border: none;
+}
+.student{
+	border: none;
+	font-size:large;
+}
+.rowtitle{
+	font-size:large;
+}
