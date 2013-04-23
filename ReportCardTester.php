@@ -78,7 +78,10 @@
 		         //submit    : 'OK',
 		         onblur : 'submit',
 		         indicator : '<img src="img/indicator.gif">',
-		         placeholder   : ''
+		         placeholder   : '',
+		         callback : function(value, settings) {
+					  	 	window.location.reload();
+				 }
 		     });
 		 });
 		 </script>

@@ -1,6 +1,6 @@
 <?php
 //connect to DB
-$dbh = new PDO('mysql:host=localhost;dbname=test', "root", "mysqldrowssaP");
+$dbh = new PDO('mysql:host=localhost;dbname=el_reportcards', "root", "mysqldrowssaP");
 $sdbh = new PDO('mysql:host=localhost;dbname=opensis_lisah', "root", "mysqldrowssaP");
 
 //make sure Khmer will come through
@@ -32,8 +32,7 @@ foreach($teachers_result as $val){
 ?>
 <html>
 	<body>
-		<form name="input" action="ReportCardTester.php" method="post">
-			
+		<form name="input" action="ReportCardTester.php" method="post">	
 			<select name ="teacher_id">
 				<?php foreach($teachers_result as $teacher) print("<option value = \"".$teacher['staff_id']."\">".$teacher['last_name'].", ".$teacher['first_name']."</option>")?>
 			</select>
