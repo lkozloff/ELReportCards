@@ -461,11 +461,16 @@ class ReportCard{
 		<?php 
 	}
 
+	//these are terrible.
 	private function connectOpenSIS(){
-		return(new PDO('mysql:host=localhost;dbname=opensis_lisah', "root", "mysqldrowssaP"));
+		include("data.php");
+		$dsn = $DatabaseType.":host=".$DatabaseServer.";dbname=".$DatabaseName;
+		return(new PDO($dsn, "$DatabaseUsername", "$DatabasePassword"));
 	}
 	private function connectELDB(){
-		$dbh = new PDO('mysql:host=localhost;dbname=el_reportcards', "root", "mysqldrowssaP");
+		include("data.php");
+		$dsn = $DatabaseType.":host=".$DatabaseServer.";dbname=".$ELDatabaseName;
+		$dbh = new PDO($dsn, "$DatabaseUsername", "$DatabasePassword");
 		$dbh->query('SET NAMES utf8');
 		return($dbh);
 	}		

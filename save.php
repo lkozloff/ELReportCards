@@ -10,7 +10,10 @@ $sid = $collate[1];
 $id = $_REQUEST['id'];
 $value = $_REQUEST['value'];
 
-$dbh = new PDO('mysql:host=localhost;dbname=el_reportcards', "root", "mysqldrowssaP");
+//blahrgh
+include("data.php");
+$dsn = $DatabaseType.":host=".$DatabaseServer.";dbname=".$ELDatabaseName;
+$dbh = new PDO($dsn, "$DatabaseUsername", "$DatabasePassword");
 $dbh->query('SET NAMES utf8');
 
 if(strcmp($id, "sid")==0){
