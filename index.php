@@ -1,11 +1,13 @@
 <?php
 //connect to DB
-$dbh = new PDO('mysql:host=localhost;dbname=el_reportcards', "root", "mysqldrowssaP");
-$sdbh = new PDO('mysql:host=localhost;dbname=opensis_lisah', "root", "mysqldrowssaP");
 
-//make sure Khmer will come through
-$sdbh->query('SET NAMES utf8');
+include("data.php");
+$dsn = $DatabaseType.":host=".$DatabaseServer.";dbname=".$ELDatabaseName;
+$dbh = new PDO($dsn, "$DatabaseUsername", "$DatabasePassword");
+$dbh->query('SET NAMES utf8');
 
+$dsn = $DatabaseType.":host=".$DatabaseServer.";dbname=".$DatabaseName;
+$sdbh = new PDO($dsn, "$DatabaseUsername", "$DatabasePassword");
 
 $templates = array();
 $query = $dbh->prepare("SELECT * from templates order by template_name ASC");
