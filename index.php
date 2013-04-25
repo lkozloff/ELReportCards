@@ -20,7 +20,7 @@ foreach($templates_result as $val){
 
 
 //grab staff names for list
-$query = $sdbh->prepare("SELECT staff_id, first_name, last_name from staff WHERE syear = 2012 and current_school_id=2 and profile ='teacher'
+$query = $sdbh->prepare("SELECT staff_id, first_name, last_name from staff WHERE syear = 2012 and current_school_id=2 and profile ='teacher' and is_disable IS NULL
 		order by last_name");
 $query->execute();
 $teachers_result = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -38,10 +38,6 @@ foreach($teachers_result as $val){
 			<select name ="teacher_id">
 				<?php foreach($teachers_result as $teacher) print("<option value = \"".$teacher['staff_id']."\">".$teacher['last_name'].", ".$teacher['first_name']."</option>")?>
 			</select>
-			<select name ="teacher_kh_id">
-				<?php foreach($teachers_result as $teacher) print("<option value = \"".$teacher['staff_id']."\">".$teacher['last_name'].", ".$teacher['first_name']."</option>")?>
-			</select>
-			
 			<select name ="template_id">
 				<?php foreach($templates as $template_id =>$template) print("<option value =\"".$template_id."\">".$template."</option>")?>
 			</select>
