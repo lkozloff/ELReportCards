@@ -262,7 +262,11 @@ class ReportCard{
 	}
 	$students['selected'] = $sname;
 	
-	return str_replace("\"","'",json_encode($students));
+	return $students;
+	}
+	
+	function getEnrolledStudentsSchema(){
+		return str_replace("\"","'",json_encode($this->getEnrolledStudents()));
 	}
 	
 	function getGradeSchema(){

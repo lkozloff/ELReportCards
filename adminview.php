@@ -47,8 +47,7 @@
 	<head><meta charset="UTF-8" />
 		<link rel = "stylesheet" type="text/css" href="style_print.css" media ="print"/>
 		<link rel = "stylesheet" type="text/css" href="style_print.css"/ media="screen"/>
-		<script src="js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/jquery.jeditable.js" type="text/javascript" charset="utf-8"></script>
+		
 		<script type="text/javascript">
 		 $(document).ready(function() {
 			 $('.editGrade').editable('save.php', { 
@@ -65,7 +64,7 @@
 			     //submit : 'OK'
 			 });
 			 $('.student').editable('save.php', { 
-			     data   : "<?php print($rp->getEnrolledStudents());?>",
+			     data   : "<?php print($rp->getEnrolledStudentsSchema());?>",
 			     type   : 'select',
 			     submit : 'OK',
 			   	 callback : function(value, settings) {
@@ -87,6 +86,32 @@
 		 </script>
 	</head><body>
 	<?php 
+	$students = $rp->getEnrolledStudents();
+	print("<div class = \"nav\">");
+	foreach($students as $studentid=>$student){
+		$collate = explode(".",$studentid);
+		if(strcmp($collate[0],"selected")==0) break;
+		$sid = $collate[1];
+		print("<a href = \"#	$sid\">$student</a><br/>");
+	}
+	print("</div>")
+	?>
+			<div style ="page-break-before: always;"></div>	
+	<?php 
+			
+			
 
-	$rp->toHTML();
+	foreach($students as $studentid=>$student){
+		?>
+		<div style ="page-break-before: always;"></div>	
+		<?php 
+		
+		$collate = explode(".",$studentid);
+		if(strcmp($collate[0],"selected")==0) break;
+		$sid = $collate[1];
+		print("<a name = \"$sid\"></a>");
+		$rp = new ReportCard($syear,$sid,$template_id,$teacher_id, $teacher_kh_id);
+		$rp->toHTML();
+		
+	}
 ?>
