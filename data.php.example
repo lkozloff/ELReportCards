@@ -1,0 +1,10 @@
+<?php 
+$DatabaseType = 'mysql'; 
+$DatabaseServer = 'localhost'; 
+$DatabaseUsername = 'ahit'; 
+$DatabasePassword = 'ahit'; 
+$DatabaseName = 'opensis_lisah'; 
+$DatabasePort = '3306'; 
+
+$ELDatabaseName = "el_reportcards";
+?>
