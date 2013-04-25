@@ -20,7 +20,11 @@ foreach($templates_result as $val){
 
 
 //grab staff names for list
+<<<<<<< HEAD
 $query = $sdbh->prepare("SELECT staff_id, first_name, last_name from staff WHERE syear = 2012 and current_school_id=2 and profile ='teacher' and is_disable IS NULL
+=======
+$query = $sdbh->prepare("SELECT staff_id, first_name, last_name from staff WHERE syear = 2012 and current_school_id=2 and profile ='teacher and is_disable IS NULL'
+>>>>>>> c0be5df71d98a978904c8f977ad03f6ed1590db6
 		order by last_name");
 $query->execute();
 $teachers_result = $query->fetchAll(PDO::FETCH_ASSOC);

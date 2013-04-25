@@ -7,3 +7,9 @@ As written it requires:
 
 This is definitely still in development, there's lots of mess in here.
 Beware.
+
+Instructions for install:
+- install JQuery and JEditable in to the js directory
+- modify data.php to suit your setup
+- profit!
+  

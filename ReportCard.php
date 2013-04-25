@@ -237,9 +237,10 @@ class ReportCard{
 	
 				FROM
 	
-				(SELECT students.first_name as fname, students.last_name as sname, students.student_id as sid, students.birthdate as DOB, schedule.course_period_id as course_period_id from students, schedule
+				(SELECT students.first_name as fname, students.last_name as sname, students.student_id as sid, students.birthdate as DOB,students.is_disable, schedule.course_period_id as course_period_id from students, schedule
 				WHERE
-				schedule.student_id = students.student_id AND schedule.syear = 2012 AND schedule.school_id=2)
+				schedule.student_id = students.student_id AND schedule.syear = 2012 AND schedule.school_id=2 
+				AND students.is_disable IS NULL AND schedule.end_date IS NULL)
 				as enrolled_students,
 	
 				(SELECT course_title, course_period_id FROM course_details WHERE teacher_id = $this->teacher_id) as course
