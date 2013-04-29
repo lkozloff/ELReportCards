@@ -95,3 +95,6 @@ td{
 .rowtitle{
 	font-size:xsmall;
 }
+#nav{
+	display:none;
+}

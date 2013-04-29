@@ -465,6 +465,9 @@ class ReportCard{
 		<?php 
 	}
 
+	function getGrade(){
+		return $this->grade;
+	}
 	//these are terrible.
 	private function connectOpenSIS(){
 		include("data.php");

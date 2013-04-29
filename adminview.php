@@ -45,66 +45,33 @@
 	?>
 	<html>
 	<head><meta charset="UTF-8" />
+		<link rel = "stylesheet" type="text/css" href="style_web.css" media="screen"/>
 		<link rel = "stylesheet" type="text/css" href="style_print.css" media ="print"/>
-		<link rel = "stylesheet" type="text/css" href="style_print.css"/ media="screen"/>
+		<script src="js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/simple-expand.min.js" type="text/javascript" charset="utf-8"></script>
 		
 		<script type="text/javascript">
-		 $(document).ready(function() {
-			 $('.editGrade').editable('save.php', { 
-			     data   : "<?php print($rp->getGradeSchema());?>",
-			     type   : 'select',
-				 onblur : 'submit',
-			     //submit : 'OK'
-				     
-			 });
-			 $('.editEffort').editable('save.php', { 
-				 data   : "<?php print($rp->getEffortSchema());?>",
-			     type   : 'select',
-			     onblur : 'submit',
-			     //submit : 'OK'
-			 });
-			 $('.student').editable('save.php', { 
-			     data   : "<?php print($rp->getEnrolledStudentsSchema());?>",
-			     type   : 'select',
-			     submit : 'OK',
-			   	 callback : function(value, settings) {
-			  	 	window.location.reload();
-			     }
-			 });
-		     $('.commentblock').editable('save.php', { 
-		         type      : 'textarea',
-		         //cancel    : 'Cancel',
-		         //submit    : 'OK',
-		         onblur : 'submit',
-		         indicator : '<img src="img/indicator.gif">',
-		         placeholder   : '',
-		         callback : function(value, settings) {
-					  	 	window.location.reload();
-				 }
-		     });
-		 });
+			$(function () {
+	            $('.expander').simpleexpand();
+	        });
+			
 		 </script>
 	</head><body>
 	<?php 
 	$students = $rp->getEnrolledStudents();
-	print("<div class = \"nav\">");
+	print("<div id = \"nav\">");
+	print("<h1><a href =\"#\" class = \"expander\">".$rp->getGrade()."</a></h1>");
+	print("<div class = \"content\">\n");
 	foreach($students as $studentid=>$student){
 		$collate = explode(".",$studentid);
 		if(strcmp($collate[0],"selected")==0) break;
 		$sid = $collate[1];
-		print("<a href = \"#	$sid\">$student</a><br/>");
+		print("<a href = \"#$sid\">$student</a><br/>\n");
 	}
-	print("</div>")
-	?>
-			<div style ="page-break-before: always;"></div>	
-	<?php 
-			
-			
-
+	print("</div></div>");
+	
 	foreach($students as $studentid=>$student){
-		?>
-		<div style ="page-break-before: always;"></div>	
-		<?php 
+		
 		
 		$collate = explode(".",$studentid);
 		if(strcmp($collate[0],"selected")==0) break;
@@ -112,6 +79,8 @@
 		print("<a name = \"$sid\"></a>");
 		$rp = new ReportCard($syear,$sid,$template_id,$teacher_id, $teacher_kh_id);
 		$rp->toHTML();
-		
+		?>
+				<div style ="page-break-after: always;"></div>	
+		<?php 
 	}
 ?>

@@ -32,7 +32,7 @@ table.nooutline{
 .commentSectionTitle{
 	font-weight: bold;
 	background-color: rgb(240,240,240);
-	font-size: large;
+	font-size: xsmall;
 	text-align: center;
 	height: 7mm;
 }
@@ -52,19 +52,19 @@ td{
 .sectiontitle{
 	font-weight: bold;
 	background-color: rgb(240,240,240);
-	font-size: large;
+	font-size: xsmall;
 	text-align: right;
 }
 .sectiontitlecenter{
 	font-weight: bold;
 	background-color: rgb(240,240,240);
-	font-size: large;
+	font-size: xsmall;
 	text-align: center;
 }
 .sectiontitlecenterfixed{
 	font-weight: bold;
 	background-color: rgb(240,240,240);
-	font-size: large;
+	font-size: xsmall;
 	text-align: center;
 	width: 1.5cm;
 }
@@ -77,11 +77,9 @@ td{
 }
 .editGrade{
 	font-weight: bold;
-	font-size: large;
 }
 .editEffort{
 	font-weight: bold;	
-	font-size: large;
 }
 
 .commentblock{
@@ -93,11 +91,32 @@ td{
 }
 .student{
 	border: none;
-	font-size:large;
 }
 .rowtitle{
-	font-size:large;
+	font-size:xsmall;
 }
 #nav{
+	font-size: small;
+	color:white;
 	background-color: green;
+	float:right;
+	padding: 10px;
+	position: fixed;
+	left: 85%;
 }
+#nav a{
+	color: white;
+	text-decoration: none;
+}
+#nav a:hover{
+	text-decoration: underline;	
+}
+#nav h1{
+		margin: 1px;
+}
+#nav h1 a{
+	font-size: small;
+	color: yellow;
+	text-decoration: underline;
+}
+.content {display:none;}
