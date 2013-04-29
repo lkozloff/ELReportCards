@@ -55,7 +55,7 @@ class ReportCard{
 	
 	private $effort_schema;
 	private $grade_schema;
-	function __construct($syear="2012", $sid="520", $template_id="2", $teacher_id="209", $teacher_kh_id="209"){
+	function __construct($syear="2012", $sid=null, $template_id="2", $teacher_id="209", $teacher_kh_id="209"){
 		
 		$this->syear=$syear;
 		$this->sid=$sid;
@@ -70,10 +70,13 @@ class ReportCard{
 		// Good stuff starts here!
 		
 		//generate actual student name
-		$query = $sdbh->prepare("SELECT first_name, last_name from students where student_id = '$sid'");
-		$query->execute();
-		$val = $query->fetch();
-		$this->sname = $val['last_name'].", ".$val['first_name'];
+		if($sid!=null){
+			$query = $sdbh->prepare("SELECT first_name, last_name from students where student_id = '$sid'");
+			$query->execute();
+			$val = $query->fetch();
+			$this->sname = $val['last_name'].", ".$val['first_name'];
+		}
+		else $this->sname = "Please Select a Student";
 		
 		//generate actual teacher name
 		$query = $sdbh->prepare("SELECT first_name, last_name from staff where staff_id = '$teacher_id'");
