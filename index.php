@@ -73,5 +73,17 @@ foreach($teachers_kh_result as $val){
 
 			<input type="submit" value="Submit">
 		</form>
+		<p>
+			<h2>updated 29 April 2013</h2>
+			<ul style="font-style: italic;">
+				<li>Added new views</li>
+				<li>Added navigation/status bar</li>
+				<li>Removed option to click on students names</li>
+				<li>Added coloration of student names to indicate completion (red = "not much", orange = "some", white = "getting there!")</li>
+			</ul>
+		</p>
+		<p>In response to some confusion about how to get to student names, I've updated the way to select them. Now, click on your
+		name in the upper right to bring up a menu of all your students. The numbers indicate how many fields of data you've entered.</p>
+		<p><strong><em>questions? comments? email it@asianhope.org</em></strong>
 	</body>
 </html>
