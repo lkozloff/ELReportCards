@@ -99,10 +99,11 @@ td{
 	font-size: small;
 	color:white;
 	background-color: rgb(32,96,32);
-	float:right;
 	padding: 10px;
+	
 	position: fixed;
-	float: right;
+	width: 20%;
+	left: 80%;
 }
 #nav a{
 	color: white;
@@ -123,7 +124,7 @@ td{
 .content table{
 	color: yellow;
 	font-size: normal;
-	width: 12em;
+	width: 95%;
 	border: none;
 }
 .content tr{

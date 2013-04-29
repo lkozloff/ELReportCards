@@ -61,7 +61,8 @@
 	$students = $rp->getEnrolledStudents();
 	print("<div id = \"nav\">");
 	print("<h1><a href =\"#\" class = \"expander\">".$rp->getGrade()." - ".$rp->getTeacherName()."</a></h1>");
-	print("<div class = \"content\">\n");
+print("<div class = \"content\">\n<table>");
+	print("<tr><td>Name</td><td>Data Recorded</td>");
 	foreach($students as $studentid=>$student){
 
 		//break if we get to the 'selected' entry
@@ -69,19 +70,19 @@
 		if(strcmp($collate[0],"selected")==0) break;
 		
 		//otherwise pull the SID
-		$sid = $collate[1];
+		$tempsid = $collate[1];
 		
-		$data = intval($rp->hasData($sid));
+		$data = intval($rp->hasData($tempsid));
 			if      ($data>=20){ $color = "white";}
 			else if ($data>=10 && $data<20){ $color = "orange";}
-			else if ($data<10) { $color = "red";}
+			else if ($data<10) { $color = "rgb(255,128,128)";}
 			else 				{ $color = "brown";}
 
 		
-		print("<a href = \"#$sid\" style =\"color:$color;\">$student - ");
-		print($data."</a><br/>");
+		print("<tr><td><a href = \"#$tempsid\" style =\"color:$color;\">$student</a></td>");
+		print("<td style = \"color: $color\">".$data."</a></td>");
 	}
-	print("<a href =\"index.php\">- choose another template -</a></div></div>");
+	print("</table><a href =\"index.php\">- choose another template -</a></div></div>");
 	
 	foreach($students as $studentid=>$student){
 		
