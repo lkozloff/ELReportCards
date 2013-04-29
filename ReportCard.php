@@ -468,6 +468,31 @@ class ReportCard{
 	function getGrade(){
 		return $this->grade;
 	}
+	
+	function getTeacherName(){
+		return $this->teacher_name;
+	}
+	
+	//return the number of records a student has in the DB
+	function hasData($sid){
+		$dbh = $this->connectELDB();
+		$template_id = $this->template_id;
+		
+		$sql = "SELECT count(*) as count from el_grades WHERE template_id = '$template_id' AND student_id = '$sid'";
+		$query = $dbh->prepare($sql);
+		$query->execute();
+		$res = $query->fetch();
+		$count = $res['count'];
+		
+		$sql = "SELECT count(*) as count from el_comments WHERE template_id = '$template_id' AND student_id = '$sid'";
+		$query = $dbh->prepare($sql);
+		$query->execute();
+		$res = $query->fetch();
+		$count += $res['count'];
+		
+		return $count;
+		
+	}
 	//these are terrible.
 	private function connectOpenSIS(){
 		include("data.php");

@@ -3,6 +3,7 @@ EL teachers to input grades.
 
 As written it requires:
 - JQuery and JEditable
+- Simple-expand (http://github.com/redhotsly/simple-expand)
 - OpenSIS (or rather, access to an OpenSIS database for pulling student names)
 
 This is definitely still in development, there's lots of mess in here.

@@ -46,11 +46,15 @@
 	<html>
 	<head><meta charset="UTF-8" />
 		<link rel = "stylesheet" type="text/css" href="style_print.css" media ="print"/>
-		<link rel = "stylesheet" type="text/css" href="style_print.css"/ media="screen"/>
+		<link rel = "stylesheet" type="text/css" href="style_web.css" media="screen"/>
 		<script src="js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/jquery.jeditable.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/simple-expand.min.js" type="text/javascript" charset="utf-8"></script>
+		
 		<script type="text/javascript">
 		 $(document).ready(function() {
+			 $('.expander').simpleexpand();
+			 
 			 $('.editGrade').editable('save.php', { 
 			     data   : "<?php print($rp->getGradeSchema());?>",
 			     type   : 'select',
@@ -87,6 +91,29 @@
 		 </script>
 	</head><body>
 	<?php 
+	$students = $rp->getEnrolledStudents();
+	print("<div id = \"nav\">");
+	print("<h1><a href =\"#\" class = \"expander\">".$rp->getGrade()." - ".$rp->getTeacherName()."</a></h1>");
+	print("<div class = \"content\">\n");
+	foreach($students as $studentid=>$student){
 
+		//break if we get to the 'selected' entry
+		$collate = explode(".",$studentid);
+		if(strcmp($collate[0],"selected")==0) break;
+		
+		//otherwise pull the SID
+		$sid = $collate[1];
+		
+		$data = intval($rp->hasData($sid));
+			if      ($data>=20){ $color = "white";}
+			else if ($data>=10 && $data<20){ $color = "orange";}
+			else if ($data<10) { $color = "red";}
+			else 				{ $color = "brown";}
+
+		
+		print("<strong style =\"color:$color;\">$student - ");
+		print($data."</strong><br/>");
+	}
+	print("<a href =\"index.php\">- choose another template -</a></div></div>");
 	$rp->toHTML();
 ?>

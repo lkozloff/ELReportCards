@@ -98,11 +98,11 @@ td{
 #nav{
 	font-size: small;
 	color:white;
-	background-color: green;
+	background-color: rgb(32,96,32);
 	float:right;
 	padding: 10px;
 	position: fixed;
-	left: 85%;
+	left: 82%;
 }
 #nav a{
 	color: white;
