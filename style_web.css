@@ -102,7 +102,7 @@ td{
 	float:right;
 	padding: 10px;
 	position: fixed;
-	left: 82%;
+	float: right;
 }
 #nav a{
 	color: white;
@@ -120,3 +120,19 @@ td{
 	text-decoration: underline;
 }
 .content {display:none;}
+.content table{
+	color: yellow;
+	font-size: normal;
+	width: 12em;
+	border: none;
+}
+.content tr{
+	font-size: normal;
+	border: solid green 1px;
+	background-color: rgb(32,96,32);
+}
+.content td{
+	font-size: normal;
+	border: none;
+
+}

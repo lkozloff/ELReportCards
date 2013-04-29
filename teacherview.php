@@ -8,12 +8,19 @@
 	else
 		$syear = $_REQUEST['syear'];
 	
-	if(!isset($_SESSION['sid']))
-		$sid = null;
-	else{
+	if(isset($_REQUEST['sid'])){
+		$collate = explode(".",$_REQUEST['sid']);
+		$sid = $collate[1];
+		
+		$_SESSION['sid'] = $_REQUEST['sid'];
+	}
+	else if(isset($_SESSION['sid'])){
 		//hack to make list alphabetized: needs to be stripped from what's actually there.  (Surname, Firstname.SID)
 		$collate = explode(".",$_SESSION['sid']);
 		$sid = $collate[1];
+	}	
+	else{
+		$sid = null;
 	}
 	
 	//are we sending from a form? or have we already gotten a teacher?
@@ -68,14 +75,6 @@
 			     onblur : 'submit',
 			     //submit : 'OK'
 			 });
-			 $('.student').editable('save.php', { 
-			     data   : "<?php print($rp->getEnrolledStudentsSchema());?>",
-			     type   : 'select',
-			     submit : 'OK',
-			   	 callback : function(value, settings) {
-			  	 	window.location.reload();
-			     }
-			 });
 		     $('.commentblock').editable('save.php', { 
 		         type      : 'textarea',
 		         //cancel    : 'Cancel',
@@ -94,7 +93,8 @@
 	$students = $rp->getEnrolledStudents();
 	print("<div id = \"nav\">");
 	print("<h1><a href =\"#\" class = \"expander\">".$rp->getGrade()." - ".$rp->getTeacherName()."</a></h1>");
-	print("<div class = \"content\">\n");
+	print("<div class = \"content\">\n<table>");
+	print("<tr><td>Name</td><td>Data Recorded</td>");
 	foreach($students as $studentid=>$student){
 
 		//break if we get to the 'selected' entry
@@ -102,18 +102,18 @@
 		if(strcmp($collate[0],"selected")==0) break;
 		
 		//otherwise pull the SID
-		$sid = $collate[1];
+		$tempsid = $collate[1];
 		
-		$data = intval($rp->hasData($sid));
+		$data = intval($rp->hasData($tempsid));
 			if      ($data>=20){ $color = "white";}
 			else if ($data>=10 && $data<20){ $color = "orange";}
-			else if ($data<10) { $color = "red";}
+			else if ($data<10) { $color = "rgb(255,128,128)";}
 			else 				{ $color = "brown";}
 
 		
-		print("<strong style =\"color:$color;\">$student - ");
-		print($data."</strong><br/>");
+		print("<tr><td><a href = \"teacherview.php?sid=$student.$tempsid\" style =\"color:$color;\">$student</a></td>");
+		print("<td style = \"color: $color\">".$data."</a></td>");
 	}
-	print("<a href =\"index.php\">- choose another template -</a></div></div>");
+	print("</table><a href =\"index.php\">- choose another template -</a></div></div>");
 	$rp->toHTML();
 ?>

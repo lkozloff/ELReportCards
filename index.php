@@ -46,7 +46,7 @@ foreach($teachers_kh_result as $val){
 ?>
 <html>
 	<body>
-	<h1>Teacher View (Single Report Card)</h1>
+	<h1>Teacher View (Single Report Card, Editable)</h1>
 		<form name="input" action="teacherview.php" method="post">	
 			
 			<select name ="teacher_id">
@@ -57,7 +57,7 @@ foreach($teachers_kh_result as $val){
 			</select>
 			<input type="submit" value="Submit">
 		</form>
-	<h1> Admin View (Full Class of Report Cards, non editable)</h1>
+	<h1> Admin/Printing View (Full Class of Report Cards, non editable)</h1>
 		<form name="input" action="adminview.php" method="post">	
 			
 			<select name ="teacher_id">
