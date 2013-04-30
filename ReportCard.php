@@ -489,7 +489,7 @@ class ReportCard{
 		
 		//special case if there are only 3 columns
 		if($columns == 3){
-			$sql = "SELECT count(*) as count from el_grades WHERE template_id = '$template_id' AND student_id = '$sid'";
+			$sql = "SELECT count(*) as count from el_grades WHERE template_id = '$template_id' AND student_id = '$sid' AND value NOT LIKE '.'";
 			$query = $dbh->prepare($sql);
 			$query->execute();
 			$res = $query->fetch();
@@ -497,13 +497,13 @@ class ReportCard{
 		}
 		//otherwise just pull the grades and count those
 		else{
-			$sql = "SELECT count(*) as count from el_grades WHERE template_id = '$template_id' AND student_id = '$sid' AND type = 'E'";
+			$sql = "SELECT count(*) as count from el_grades WHERE template_id = '$template_id' AND student_id = '$sid' AND type = 'E' AND value NOT LIKE '.'";
 			$query = $dbh->prepare($sql);
 			$query->execute();
 			$res = $query->fetch();
 			$count = $res['count'];
 			
-			$sql = "SELECT count(*) as count from el_grades WHERE template_id = '$template_id' AND student_id = '$sid' AND type = 'G'";
+			$sql = "SELECT count(*) as count from el_grades WHERE template_id = '$template_id' AND student_id = '$sid' AND type = 'G' AND value NOT LIKE '.'";
 			$query = $dbh->prepare($sql);
 			$query->execute();
 			$res = $query->fetch();
