@@ -269,7 +269,11 @@ class ReportCard{
 	}
 	$students['selected'] = $sname;
 	
-	return str_replace("\"","'",json_encode($students));
+	return $students;
+	}
+	
+	function getEnrolledStudentsSchema(){
+		return str_replace("\"","'",json_encode($this->getEnrolledStudents()));
 	}
 	
 	function getGradeSchema(){
@@ -468,6 +472,63 @@ class ReportCard{
 		<?php 
 	}
 
+	function getGrade(){
+		return $this->grade;
+	}
+	
+	function getTeacherName(){
+		return $this->teacher_name;
+	}
+	
+	//return the number of records a student has in the DB
+	function hasData($sid){
+		$dbh = $this->connectELDB();
+		$template_id = $this->template_id;
+		
+		$sql = "SELECT columns from templates WHERE template_id = '$template_id'";
+		$query = $dbh->prepare($sql);
+		$query->execute();
+		$res = $query->fetch();
+		$columns = $res['columns'];
+		
+		//
+		$count = 0;
+		
+		//special case if there are only 3 columns
+		if($columns == 3){
+			$sql = "SELECT count(*) as count from el_grades WHERE template_id = '$template_id' AND student_id = '$sid' AND value NOT LIKE '.'";
+			$query = $dbh->prepare($sql);
+			$query->execute();
+			$res = $query->fetch();
+			$count = $res['count'];
+		}
+		//otherwise just pull the grades and count those
+		else{
+			$sql = "SELECT count(*) as count from el_grades WHERE template_id = '$template_id' AND student_id = '$sid' AND type = 'E' AND value NOT LIKE '.'";
+			$query = $dbh->prepare($sql);
+			$query->execute();
+			$res = $query->fetch();
+			$count = $res['count'];
+			
+			$sql = "SELECT count(*) as count from el_grades WHERE template_id = '$template_id' AND student_id = '$sid' AND type = 'G' AND value NOT LIKE '.'";
+			$query = $dbh->prepare($sql);
+			$query->execute();
+			$res = $query->fetch();
+			$count += $res['count'];
+			
+			$count /= 2;
+		}
+		
+		$sql = "SELECT count(*) as count from template_fields WHERE template_id = '$template_id' AND is_graded = 1";
+		$query = $dbh->prepare($sql);
+		$query->execute();
+		$res = $query->fetch();
+		$total = $res['count'];
+		
+		$percent = ($count/$total)*100;
+		return $percent;
+		
+	}
 	//these are terrible.
 	private function connectOpenSIS(){
 		include("data.php");
