@@ -478,19 +478,48 @@ class ReportCard{
 		$dbh = $this->connectELDB();
 		$template_id = $this->template_id;
 		
-		$sql = "SELECT count(*) as count from el_grades WHERE template_id = '$template_id' AND student_id = '$sid'";
+		$sql = "SELECT columns from templates WHERE template_id = '$template_id'";
 		$query = $dbh->prepare($sql);
 		$query->execute();
 		$res = $query->fetch();
-		$count = $res['count'];
+		$columns = $res['columns'];
 		
-		$sql = "SELECT count(*) as count from el_comments WHERE template_id = '$template_id' AND student_id = '$sid'";
+		//
+		$count = 0;
+		
+		//special case if there are only 3 columns
+		if($columns == 3){
+			$sql = "SELECT count(*) as count from el_grades WHERE template_id = '$template_id' AND student_id = '$sid'";
+			$query = $dbh->prepare($sql);
+			$query->execute();
+			$res = $query->fetch();
+			$count = $res['count'];
+		}
+		//otherwise just pull the grades and count those
+		else{
+			$sql = "SELECT count(*) as count from el_grades WHERE template_id = '$template_id' AND student_id = '$sid' AND type = 'E'";
+			$query = $dbh->prepare($sql);
+			$query->execute();
+			$res = $query->fetch();
+			$count = $res['count'];
+			
+			$sql = "SELECT count(*) as count from el_grades WHERE template_id = '$template_id' AND student_id = '$sid' AND type = 'G'";
+			$query = $dbh->prepare($sql);
+			$query->execute();
+			$res = $query->fetch();
+			$count += $res['count'];
+			
+			$count /= 2;
+		}
+		
+		$sql = "SELECT count(*) as count from template_fields WHERE template_id = '$template_id' AND is_graded = 1";
 		$query = $dbh->prepare($sql);
 		$query->execute();
 		$res = $query->fetch();
-		$count += $res['count'];
+		$total = $res['count'];
 		
-		return $count;
+		$percent = ($count/$total)*100;
+		return $percent;
 		
 	}
 	//these are terrible.

@@ -94,7 +94,7 @@
 	print("<div id = \"nav\">");
 	print("<h1><a href =\"#\" class = \"expander\">".$rp->getGrade()." - ".$rp->getTeacherName()."</a></h1>");
 	print("<div class = \"content\">\n<table>");
-	print("<tr><td>Name</td><td>Data Recorded</td>");
+	print("<tr><td>Name</td><td>Estimated Completion</td>");
 	foreach($students as $studentid=>$student){
 
 		//break if we get to the 'selected' entry
@@ -105,14 +105,14 @@
 		$tempsid = $collate[1];
 		
 		$data = intval($rp->hasData($tempsid));
-			if      ($data>=20){ $color = "white";}
-			else if ($data>=10 && $data<20){ $color = "orange";}
-			else if ($data<10) { $color = "rgb(255,128,128)";}
+			if      ($data>=75){ $color = "white";}
+			else if ($data>=50 && $data<75){ $color = "orange";}
+			else if ($data<50) { $color = "rgb(255,128,128)";}
 			else 				{ $color = "brown";}
-
+		
 		
 		print("<tr><td><a href = \"teacherview.php?sid=$student.$tempsid\" style =\"color:$color;\">$student</a></td>");
-		print("<td style = \"color: $color\">".$data."</a></td>");
+		print("<td style = \"color: $color\">".$data."%</a></td>");
 	}
 	print("</table><a href =\"index.php\">- choose another template -</a></div></div>");
 	$rp->toHTML();
