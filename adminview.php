@@ -86,7 +86,7 @@ print("<div class = \"content\">\n<table>");
 		$count++;
 		$data_total += $data;
 	}
-	print("<tr><td>Total Completion:</td><td>".($data_total/$count)."%</td></tr>");
+	print("<tr><td>Total Completion:</td><td>".(intval($data_total/$count))."%</td></tr>");
 	print("</table><a href =\"index.php\">- choose another template -</a></div></div>");
 	
 	foreach($students as $studentid=>$student){
