@@ -91,6 +91,9 @@
 	</head><body>
 	<?php 
 	$students = $rp->getEnrolledStudents();
+	$count = 0;
+	$data_total = 0;
+	
 	print("<div id = \"nav\">");
 	print("<h1><a href =\"#\" class = \"expander\">".$rp->getGrade()." - ".$rp->getTeacherName()."</a></h1>");
 	print("<div class = \"content\">\n<table>");
@@ -113,7 +116,11 @@
 		
 		print("<tr><td><a href = \"teacherview.php?sid=$student.$tempsid\" style =\"color:$color;\">$student</a></td>");
 		print("<td style = \"color: $color\">".$data."%</a></td>");
+		
+		$count++;
+		$data_total += $data;
 	}
+	print("<tr><td><strong>Total Completion:</strong></td><td><strong>".(intval($data_total/$count))."%</strong></td></tr>");
 	print("</table><a href =\"index.php\">- choose another template -</a></div></div>");
 	$rp->toHTML();
 ?>

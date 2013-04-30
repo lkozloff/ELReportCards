@@ -59,6 +59,8 @@
 	</head><body>
 	<?php 
 	$students = $rp->getEnrolledStudents();
+	$count = 0;
+	$data_total = 0;
 	print("<div id = \"nav\">");
 	print("<h1><a href =\"#\" class = \"expander\">".$rp->getGrade()." - ".$rp->getTeacherName()."</a></h1>");
 print("<div class = \"content\">\n<table>");
@@ -81,7 +83,10 @@ print("<div class = \"content\">\n<table>");
 		
 		print("<tr><td><a href = \"#$tempsid\" style =\"color:$color;\">$student</a></td>");
 		print("<td style = \"color: $color\">".$data."%</a></td>");
+		$count++;
+		$data_total += $data;
 	}
+	print("<tr><td>Total Completion:</td><td>".($data_total/$count)."%</td></tr>");
 	print("</table><a href =\"index.php\">- choose another template -</a></div></div>");
 	
 	foreach($students as $studentid=>$student){
