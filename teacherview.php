@@ -94,6 +94,7 @@
 	$count = 0;
 	$data_total = 0;
 	
+	//print out the navigation menu
 	print("<div id = \"nav\">");
 	print("<h1><a href =\"#\" class = \"expander\">".$rp->getGrade()." - ".$rp->getTeacherName()."</a></h1>");
 	print("<div class = \"content\">\n<table>");
@@ -113,7 +114,9 @@
 			else if ($data<50) { $color = "rgb(255,128,128)";}
 			else 				{ $color = "brown";}
 		
-		
+		//by default, select the first student in the list
+		if($sid == 0) $sid = $tempsid;
+			
 		print("<tr><td><a href = \"teacherview.php?sid=$student.$tempsid\" style =\"color:$color;\">$student</a></td>");
 		print("<td style = \"color: $color\">".$data."%</a></td>");
 		
@@ -122,5 +125,6 @@
 	}
 	print("<tr><td><strong>Total Completion:</strong></td><td><strong>".(intval($data_total/$count))."%</strong></td></tr>");
 	print("</table><a href =\"index.php\">- choose another template -</a></div></div>");
+	$rp = new ReportCard($syear,$sid,$template_id,$teacher_id, $teacher_kh_id);
 	$rp->toHTML();
 ?>
