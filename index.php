@@ -74,6 +74,10 @@ foreach($teachers_kh_result as $val){
 			<input type="submit" value="Submit">
 		</form>
 		<p>
+			<h2>updated 16 May 2013</h2>
+			<ul style = "font-style: italic;">
+				<li>by default now selecting first student in list</li>
+			</ul>
 			<h2>updated 29 April 2013</h2>
 			<ul style="font-style: italic;">
 				<li>Added new views</li>
