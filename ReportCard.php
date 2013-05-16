@@ -120,9 +120,7 @@ class ReportCard{
 		foreach($mp_result as $val){
 			$sdate = $val['start_date'];
 			$edate = $val['end_date'];
-			if(strtotime($edate) > time()){
-				$edate = date("Y-m-d",strtotime("Yesterday")); //don't want to account for today
-			}
+	
 			//get total number of days per marking period - this excludes holidays, as we would want
 			$q = $sdbh->prepare("SELECT COUNT(*) as count from attendance_calendar where syear=$syear AND school_id=2 AND school_date>='"
 					.$sdate."' AND school_date<='".$edate."'");
