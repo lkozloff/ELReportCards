@@ -150,7 +150,7 @@ class ReportCard{
 			
 			//get the total number of unknown days
 			$q = $sdbh->prepare("SELECT COUNT(*) as count from attendance_calendar where syear=$syear AND school_id=2 AND school_date>='"
-					.date("Y-m-d",strtotime("Today"))."' AND school_date<='".$edate."'");
+					.date("Y-m-d",strtotime("Tomorrow"))."' AND school_date<='".$edate."'");
 		
 			$q->execute();
 			$dures = $q->fetch();
