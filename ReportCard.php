@@ -116,6 +116,7 @@ class ReportCard{
 		$query->execute();
 		$mp_result = $query->fetchAll(PDO::FETCH_ASSOC);
 		$i = 1;
+		
 		//this runs once per marking period -
 		foreach($mp_result as $val){
 			$sdate = $val['start_date'];
@@ -126,11 +127,7 @@ class ReportCard{
 					.$sdate."' AND school_date<='".$edate."'");
 			$q->execute();
 			$res = $q->fetch();
-
-			// if we're not at the end of the year yet, we need to exclude all days after today for attendance
-			if(strtotime($edate) > time()){
-				$edate = date("Y-m-d",strtotime("Yesterday")); //don't want to account for today
-			}
+			
 			//get total number of days present for selected student by
 			$qda = $sdbh->prepare("
 					SELECT count(attendance_period.school_date) as count from attendance_period,
@@ -150,11 +147,22 @@ class ReportCard{
 					.$sdate."' AND school_date<='".$edate."'");
 			$qdt->execute();
 			$dtres = $qdt->fetch();
-
+			
+			//get the total number of unknown days
+			$q = $sdbh->prepare("SELECT COUNT(*) as count from attendance_calendar where syear=$syear AND school_id=2 AND school_date>='"
+					.date("Y-m-d",strtotime("Today"))."' AND school_date<='".$edate."'");
+			print("SELECT COUNT(*) as count from attendance_calendar where syear=$syear AND school_id=2 AND school_date>='"
+			.date("Y-m-d",strtotime("Today"))."' AND school_date<='".$edate."'");
+			$q->execute();
+			$dures = $q->fetch();
+			
+		
 			//load them up
 			$sdays[$i] = $res['count'];
 			$da[$i] = $dares['count'];
 			$dt[$i] = $dtres['count'];
+			$du[$i] = $dures['count'];
+			
 			$i++;
 		}
 
@@ -164,9 +172,14 @@ class ReportCard{
 		//tardies are tardies!
 		$this->dt1 = $dt['1'];
 		$this->dt2 = $dt['2'];
+		
+		//If we're not at the end of a marking period, we don't know about certain days - so we give them the benefit of the doubt
+		$unknownS1 = $du['1'];
+		$unknownS2 = $du['2'];
+		
 		//days absent are the total days - days present - days tardy (that is: all attendance codes that aren't 'present' or 'late')
-		$this->da1 = $sdays['1'] - $da['1'] - $this->dt1;
-		$this->da2 = $sdays['2'] - $da['2'] - $this->dt2;
+		$this->da1 = $sdays['1'] - $da['1'] - $this->dt1 - $unknownS1;
+		$this->da2 = $sdays['2'] - $da['2'] - $this->dt2 - $unknownS2;
 	}
 
 	/*
