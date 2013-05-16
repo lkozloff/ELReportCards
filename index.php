@@ -47,8 +47,8 @@ foreach($teachers_kh_result as $val){
 <html>
 	<body>
 	<h1>Teacher View (Single Report Card, Editable)</h1>
-		<form name="input" action="teacherview.php" method="post">	
-			
+		<form name="input" action="teacherview.php" method="post">
+
 			<select name ="teacher_id">
 				<?php foreach($teachers_result as $teacher) print("<option value = \"".$teacher['staff_id']."\">".$teacher['last_name'].", ".$teacher['first_name']."</option>")?>
 			</select>
@@ -58,18 +58,19 @@ foreach($teachers_kh_result as $val){
 			<input type="submit" value="Submit">
 		</form>
 	<h1> Admin/Printing View (Full Class of Report Cards, non editable)</h1>
-		<form name="input" action="adminview.php" method="post">	
-			
+		<form name="input" action="adminview.php" method="post">
+
 			<select name ="teacher_id">
 				<?php foreach($teachers_result as $teacher) print("<option value = \"".$teacher['staff_id']."\">".$teacher['last_name'].", ".$teacher['first_name']."</option>")?>
 			</select>
 			<select name ="teacher_kh_id">
+                <option value = "0">No Khmer Teacher</option>
 				<?php foreach($teachers_kh_result as $teacher) print("<option value = \"".$teacher['staff_id']."\">".$teacher['last_name'].", ".$teacher['first_name']."</option>")?>
 			</select>
 			<select name ="template_id">
 				<?php foreach($templates as $template_id =>$template) print("<option value =\"".$template_id."\">".$template."</option>")?>
 			</select>
-			
+
 
 			<input type="submit" value="Submit">
 		</form>
