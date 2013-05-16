@@ -1,6 +1,6 @@
 @page{
     size: 297mm 210mm;
-    margin: .25cm;
+    margin: 1.5cm .25cm .25cm .25cm;
 }
 @font-face {
   font-family: 'Andika';
@@ -13,7 +13,7 @@ table{
 	background-color: white;
 	border-collapse: collapse;
 	border: none;
-	width: 130mm;
+	width: 150mm;
 }
 table.outline{
 	border: solid black 1px;
